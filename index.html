@@ -6,7 +6,37 @@
   <title>Para mi nena de ojitos bonitos 🤍</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+<script>
+  const starsContainer = document.getElementById("stars");
 
+  function createStar(){
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.innerText = "✦";
+
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.fontSize = (Math.random() * 8 + 8) + "px";
+    star.style.animationDuration = (Math.random() * 2 + 3) + "s";
+
+    starsContainer.appendChild(star);
+
+    setTimeout(() => {
+      star.remove();
+    }, 5000);
+  }
+
+  function startStars(){
+    starsInterval = setInterval(createStar, 300);
+    setTimeout(() => {
+      clearInterval(starsInterval);
+    }, 3500);
+  }
+
+  // 🎯 cuando se abre la carta
+  openBtn.addEventListener("click", () => {
+    startStars();
+  });
+</script>
 <body>
   <main class="paper">
     <header class="header">
