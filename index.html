@@ -4,14 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Para mi nena de ojitos bonitos 🤍</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
   <main class="paper">
     <header class="header">
       <div class="stamp">Hecho con amor</div>
+
       <h1>Nuestra historia 🤍</h1>
+
       <p class="intro">
         Esta no es solo una página web…<br>
         es un recuerdo, un sentimiento,<br>
@@ -55,32 +57,35 @@
     </footer>
   </main>
 
-  <!-- 💌 CARTA OCULTA (MODAL) -->
+  <!-- 💌 CARTA (MODAL) -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true">
       <button id="closeLetter" class="close" aria-label="Cerrar">✖</button>
 
       <h2>Para ti, mi nena de ojitos bonitos</h2>
+
       <p>
         Desde que llegaste a mi vida, todo cambió.
         Los días son más suaves, las noches más tranquilas
         y el futuro tiene sentido porque estás tú.
       </p>
+
       <p>
         Gracias por quedarte, por cuidarme, por amarme de una forma tan real y sincera.
         Esta historia la quiero seguir escribiendo contigo, y que cumplamos todos nuestros sueños juntas.
       </p>
+
       <p class="firma">Con amor,<br>Emy 🤍</p>
     </div>
   </div>
 
-  <!-- 🌙 MENSAJE FINAL (aparece cuando cierras la carta) -->
+  <!-- 🌙 MENSAJE FINAL -->
   <div id="finalMessage" class="final-message" aria-hidden="true">
     Gracias por leerme con el corazón.<br>
     Aquí sigo… eligiéndote. 🤍
   </div>
 
-  <!-- 🎶 Música (empieza al tocar el botón para que no la bloquee el celular) -->
+  <!-- 🎶 Música -->
   <audio id="music" loop>
     <source src="musica.mp3" type="audio/mpeg" />
   </audio>
@@ -102,25 +107,26 @@
     }
 
     openBtn.addEventListener("click", () => {
-      modal.style.display = "flex";
+      modal.classList.add("show");
       modal.setAttribute("aria-hidden", "false");
+
+      // iPhone/Chrome bloquean autoplay: por eso se reproduce aquí con click
       if (music) music.play().catch(() => {});
     });
 
-    closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
+    function closeModal() {
+      modal.classList.remove("show");
       modal.setAttribute("aria-hidden", "true");
       showFinalMessage();
-    });
+    }
+
+    closeBtn.addEventListener("click", closeModal);
 
     modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
-        modal.setAttribute("aria-hidden", "true");
-        showFinalMessage();
-      }
+      if (e.target === modal) closeModal();
     });
   </script>
 </body>
 </html>
+
 
