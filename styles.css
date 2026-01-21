@@ -306,3 +306,24 @@ h1{
   .phrases{ font-size: 16px; }
   .btn{ width: 100%; }
 }
+/* 💗 LLORA SEGURO: fondo más íntimo cuando abres la carta */
+.modal{
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(1.5px);
+}
+
+/* 💓 botón con latido suave */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  40% { transform: scale(1.04); }
+  70% { transform: scale(1.01); }
+}
+
+.btn{
+  animation: heartbeat 3.8s ease-in-out infinite;
+}
+
+/* cuando pones el mouse encima se siente más real */
+.btn:hover{
+  animation: none;
+}
