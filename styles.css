@@ -116,4 +116,10 @@ button:hover {
   margin-top: 30px;
   font-style: italic;
 }
+/* Para que el botón se vea más lindo */
+button { border-radius: 10px; }
+
+/* Para que el modal funcione con flex */
+.modal { display: none; } /* ya lo tienes, ok */
+
 
