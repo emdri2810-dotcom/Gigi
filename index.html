@@ -1,113 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para ti 💗</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Para Gigi 🤍</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <div class="bg-hearts" aria-hidden="true"></div>
 
-  <main class="card">
-    <header class="top">
-      <div class="badge">Un regalo digital</div>
-      <h1>Mi historia favorita… eres tú ✨</h1>
-      <p class="subtitle">
-        Esta página es un pedacito de lo que siento. Hecha con cariño, solo para ti.
-      </p>
-    </header>
+<!-- 🎶 Música -->
+<audio autoplay loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
 
-    <section class="timeline">
-      <h2>Nuestra historia en 4 momentos</h2>
+<div class="paper">
 
-      <div class="steps">
-        <article class="step">
-          <span class="dot"></span>
-          <h3>El comienzo</h3>
-          <p>El día que te conocí, algo en mí dijo: “aquí pasa algo bonito”.</p>
-        </article>
+  <h1>Nuestra historia 🤍</h1>
+  <p class="intro">
+    Esta no es solo una página web,  
+    es un recuerdo, un sentimiento,  
+    y un pedacito de mi corazón para ti.
+  </p>
 
-        <article class="step">
-          <span class="dot"></span>
-          <h3>Lo simple se volvió especial</h3>
-          <p>Reír contigo, hablar de cualquier cosa… se volvió mi lugar favorito.</p>
-        </article>
+  <!-- 📸 GALERÍA -->
+  <section class="gallery">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+  </section>
 
-        <article class="step">
-          <span class="dot"></span>
-          <h3>Cuando entendí</h3>
-          <p>Que tu presencia calma, que tu voz acompaña y que tu abrazo es hogar.</p>
-        </article>
+  <!-- 💕 FRASES -->
+  <section class="phrases">
+    <p>“Te elijo incluso en los días difíciles.”</p>
+    <p>“Contigo, todo se siente hogar.”</p>
+    <p>“No sabía que el amor podía sentirse así.”</p>
+  </section>
 
-        <article class="step">
-          <span class="dot"></span>
-          <h3>Lo que elijo hoy</h3>
-          <p>Seguir construyendo contigo, paso a paso, con amor del bonito.</p>
-        </article>
-      </div>
-    </section>
+  <!-- 💌 CARTA -->
+  <section class="letter">
+    <h2>Para ti, Gigi</h2>
+    <p>
+      Desde que llegaste a mi vida, todo cambió.
+      Los días son más suaves, las noches más tranquilas
+      y el futuro tiene sentido porque estás tú.
+    </p>
+    <p>
+      Gracias por quedarte, por cuidar,
+      por amar de una forma tan real.
+      Esta historia la quiero seguir escribiendo contigo.
+    </p>
+    <p class="firma">Con amor, <br> Emy 🤍</p>
+  </section>
 
-    <section class="letter">
-      <h2>Una carta para ti 💌</h2>
-      <p class="hint">Toca el botón para abrirla.</p>
+</div>
 
-      <button class="btn" id="openLetter">Abrir carta</button>
-
-      <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="modal-content">
-          <button class="close" id="closeLetter" aria-label="Cerrar">✕</button>
-          <h3>Para <span class="name">Mi Persona Favorita</span></h3>
-          <p>
-            No sé en qué momento te volviste parte de mis días, pero pasó… y qué suerte.
-            Gracias por existir, por quedarte, por hacer que lo cotidiano se sienta mágico.
-          </p>
-          <p>
-            Prometo cuidarte con acciones, hablarte con sinceridad y elegirte con calma.
-            Si alguna vez dudas, vuelve aquí: esta página existe porque tú vales mucho.
-          </p>
-          <p class="sign">Con amor, <span class="from">— Emy</span> 💗</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="extra">
-      <div class="pill">🕯️ “Te elijo en lo simple y en lo difícil.”</div>
-      <div class="pill">🌙 “Contigo, todo se siente más bonito.”</div>
-      <div class="pill">🎧 “Nuestra canción: (ponla aquí)”</div>
-    </section>
-
-    <footer class="footer">
-      <p>Hecho con amor • <span id="date"></span></p>
-    </footer>
-  </main>
-
-  <script>
-    const modal = document.getElementById("modal");
-    const openBtn = document.getElementById("openLetter");
-    const closeBtn = document.getElementById("closeLetter");
-
-    openBtn.addEventListener("click", () => {
-      modal.classList.add("show");
-      modal.setAttribute("aria-hidden", "false");
-    });
-
-    closeBtn.addEventListener("click", () => {
-      modal.classList.remove("show");
-      modal.setAttribute("aria-hidden", "true");
-    });
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        modal.classList.remove("show");
-        modal.setAttribute("aria-hidden", "true");
-      }
-    });
-
-    const now = new Date();
-    document.getElementById("date").textContent =
-      now.toLocaleDateString("es-EC", { day: "numeric", month: "long", year: "numeric" });
-  </script>
 </body>
 </html>
