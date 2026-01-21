@@ -2,42 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para mi nena de ojitos bonitos 🤍</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<script>
-  const starsContainer = document.getElementById("stars");
 
-  function createStar(){
-    const star = document.createElement("div");
-    star.classList.add("star");
-    star.innerText = "✦";
-
-    star.style.left = Math.random() * 100 + "vw";
-    star.style.fontSize = (Math.random() * 8 + 8) + "px";
-    star.style.animationDuration = (Math.random() * 2 + 3) + "s";
-
-    starsContainer.appendChild(star);
-
-    setTimeout(() => {
-      star.remove();
-    }, 5000);
-  }
-
-  function startStars(){
-    starsInterval = setInterval(createStar, 300);
-    setTimeout(() => {
-      clearInterval(starsInterval);
-    }, 3500);
-  }
-
-  // 🎯 cuando se abre la carta
-  openBtn.addEventListener("click", () => {
-    startStars();
-  });
-</script>
 <body>
+
   <main class="paper">
     <header class="header">
       <div class="stamp">Hecho con amor</div>
@@ -52,19 +23,19 @@
     </header>
 
     <!-- 📸 GALERÍA -->
-    <section class="gallery" aria-label="Galería de fotos">
+    <section class="gallery">
       <figure class="polaroid p1">
-        <img src="foto1.jpg" alt="Foto 1" />
+        <img src="foto1.jpg" alt="Foto 1">
         <figcaption>Un pedacito de nosotros</figcaption>
       </figure>
 
       <figure class="polaroid p2">
-        <img src="foto2.jpg" alt="Foto 2" />
+        <img src="foto2.jpg" alt="Foto 2">
         <figcaption>Mi lugar favorito</figcaption>
       </figure>
 
       <figure class="polaroid p3">
-        <img src="foto3.jpg" alt="Foto 3" />
+        <img src="foto3.jpg" alt="Foto 3">
         <figcaption>Donde estás tú</figcaption>
       </figure>
     </section>
@@ -87,10 +58,10 @@
     </footer>
   </main>
 
-  <!-- 💌 CARTA (MODAL) -->
+  <!-- 💌 CARTA -->
   <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true">
-      <button id="closeLetter" class="close" aria-label="Cerrar">✖</button>
+    <div class="modal-content">
+      <button id="closeLetter" class="close">✖</button>
 
       <h2>Para ti, mi nena de ojitos bonitos</h2>
 
@@ -101,8 +72,10 @@
       </p>
 
       <p>
-        Gracias por quedarte, por cuidarme, por amarme de una forma tan real y sincera.
-        Esta historia la quiero seguir escribiendo contigo, y que cumplamos todos nuestros sueños juntas.
+        Gracias por quedarte, por cuidarme,
+        por amarme de una forma tan real y sincera.
+        Esta historia la quiero seguir escribiendo contigo,
+        paso a paso, con amor.
       </p>
 
       <p class="firma">Con amor,<br>Emy 🤍</p>
@@ -110,43 +83,67 @@
   </div>
 
   <!-- 🌙 MENSAJE FINAL -->
- <div id="finalMessage" class="final-message" aria-hidden="true">
-  Gracias por leerme con el corazón.<br>
-  Si tú estás… yo estoy en casa. 🤍
-</div>
+  <div id="finalMessage" class="final-message" aria-hidden="true">
+    Gracias por leerme con el corazón.<br>
+    Si tú estás… yo estoy en casa. 🤍
+  </div>
 
-  <!-- 🎶 Música -->
+  <!-- ✨ ESTRELLAS -->
+  <div class="stars" id="stars"></div>
+
+  <!-- 🎶 MÚSICA -->
   <audio id="music" loop>
-    <source src="musica.mp3" type="audio/mpeg" />
+    <source src="musica.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- 🌟 SCRIPT ÚNICO -->
   <script>
     const modal = document.getElementById("modal");
     const openBtn = document.getElementById("openLetter");
     const closeBtn = document.getElementById("closeLetter");
     const music = document.getElementById("music");
     const finalMessage = document.getElementById("finalMessage");
+    const starsContainer = document.getElementById("stars");
+
+    let starsInterval = null;
 
     function showFinalMessage() {
       finalMessage.classList.add("show");
-      finalMessage.setAttribute("aria-hidden", "false");
       setTimeout(() => {
         finalMessage.classList.remove("show");
-        finalMessage.setAttribute("aria-hidden", "true");
       }, 5000);
+    }
+
+    function createStar() {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.textContent = "✦";
+
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.fontSize = (Math.random() * 10 + 10) + "px";
+      star.style.animationDuration = (Math.random() * 2 + 3) + "s";
+
+      starsContainer.appendChild(star);
+      setTimeout(() => star.remove(), 5200);
+    }
+
+    function startStars() {
+      for (let i = 0; i < 12; i++) {
+        setTimeout(createStar, i * 150);
+      }
+
+      starsInterval = setInterval(createStar, 280);
+      setTimeout(() => clearInterval(starsInterval), 3500);
     }
 
     openBtn.addEventListener("click", () => {
       modal.classList.add("show");
-      modal.setAttribute("aria-hidden", "false");
-
-      // iPhone/Chrome bloquean autoplay: por eso se reproduce aquí con click
-      if (music) music.play().catch(() => {});
+      music.play().catch(() => {});
+      startStars();
     });
 
     function closeModal() {
       modal.classList.remove("show");
-      modal.setAttribute("aria-hidden", "true");
       showFinalMessage();
     }
 
@@ -156,7 +153,6 @@
       if (e.target === modal) closeModal();
     });
   </script>
+
 </body>
 </html>
-
-
