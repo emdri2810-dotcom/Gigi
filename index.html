@@ -1,62 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Para Mi nena de ojitos bonitos 🤍</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <div class="paper">
+    <h1>Nuestra historia 🤍</h1>
+    <p class="intro">
+      Esta no es solo una página web, es un recuerdo, un sentimiento,
+      y un pedacito de mi corazón para ti.
+    </p>
 
-<!-- 🎶 Música -->
-<audio autoplay loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
+    <!-- 📸 GALERÍA -->
+    <section class="gallery">
+      <img src="foto1.jpg" alt="Foto 1" />
+      <img src="foto2.jpg" alt="Foto 2" />
+      <img src="foto3.jpg" alt="Foto 3" />
+    </section>
 
-<div class="paper">
+    <!-- 💕 FRASES -->
+    <section class="phrases">
+      <p>“Te elijo incluso en los días difíciles.”</p>
+      <p>“Contigo, todo se siente hogar.”</p>
+      <p>“No sabía que el amor podía sentirse así.”</p>
+    </section>
 
-  <h1>Nuestra historia 🤍</h1>
-  <p class="intro">
-    Esta no es solo una página web,  
-    es un recuerdo, un sentimiento,  
-    y un pedacito de mi corazón para ti.
-  </p>
+    <!-- 💌 BOTÓN -->
+    <div class="boton-container">
+      <button id="openLetter">Lee esta carta 💌</button>
+    </div>
 
-  <!-- 📸 GALERÍA -->
-  <section class="gallery">
-    <img src="foto1.jpg">
-    <img src="foto2.jpg">
-    <img src="foto3.jpg">
-  </section>
-
-  <!-- 💕 FRASES -->
-  <section class="phrases">
-    <p>“Te elijo incluso en los días difíciles.”</p>
-    <p>“Contigo, todo se siente hogar.”</p>
-    <p>“No sabía que el amor podía sentirse así.”</p>
-  </section>
-  <!-- 💌 BOTÓN -->
-  <div class="boton-container">
-    <button id="openLetter">Lee esta carta 💌</button>
-  </div>
-
-  <!-- 💌 CARTA OCULTA -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span id="closeLetter">✖</span>
-      <h2>Para ti, Mi nena de ojitos bonitos</h2>
-      <p>
-        Desde que llegaste a mi vida, todo cambió.
-        Los días son más suaves, las noches más tranquilas
-        y el futuro tiene sentido porque estás tú.
-      </p>
-      <p>
-        Gracias por quedarte, por cuidarme,
-        por amarme de una forma tan real y sincera.
-        Esta historia la quiero seguir escribiendo contigo y que cumplamos todos nuestros sueños juntas.
-      </p>
-      <p class="firma">Con amor,<br>Emy 🤍</p>
+    <!-- 💌 CARTA OCULTA (MODAL) -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal-content">
+        <span id="closeLetter" aria-label="Cerrar">✖</span>
+        <h2>Para ti, Mi nena de ojitos bonitos</h2>
+        <p>
+          Desde que llegaste a mi vida, todo cambió.
+          Los días son más suaves, las noches más tranquilas
+          y el futuro tiene sentido porque estás tú.
+        </p>
+        <p>
+          Gracias por quedarte, por cuidarme, por amarme de una forma tan real y sincera.
+          Esta historia la quiero seguir escribiendo contigo y que cumplamos todos nuestros sueños juntas.
+        </p>
+        <p class="firma">Con amor,<br />Emy 🤍</p>
+      </div>
     </div>
   </div>
+
+  <!-- 🎶 Música (se reproduce al tocar el botón para que no la bloquee el celular) -->
+  <audio id="music" loop>
+    <source src="musica.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const openBtn = document.getElementById("openLetter");
+    const closeBtn = document.getElementById("closeLetter");
+    const music = document.getElementById("music");
+
+    openBtn.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modal.setAttribute("aria-hidden", "false");
+      if (music) music.play().catch(() => {});
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+      modal.setAttribute("aria-hidden", "true");
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true");
+      }
+    });
+  </script>
 </body>
 </html>
+
