@@ -1,3 +1,5 @@
+* { box-sizing: border-box; }
+
 body {
   background: #f3efe7;
   font-family: 'Georgia', serif;
@@ -5,6 +7,7 @@ body {
   justify-content: center;
   padding: 30px;
   position: relative;
+  margin: 0;
 }
 
 /* ✨ ESTRELLAS VINTAGE */
@@ -34,14 +37,16 @@ body::before {
 h1 {
   text-align: center;
   font-size: 42px;
+  margin: 0 0 10px;
 }
 
 .intro {
   text-align: center;
   font-style: italic;
-  margin-bottom: 40px;
+  margin: 0 0 40px;
 }
 
+/* 📸 Galería */
 .gallery {
   display: flex;
   gap: 20px;
@@ -54,21 +59,24 @@ h1 {
   border: 8px solid #fff;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   transform: rotate(-2deg);
+  max-width: 100%;
 }
 
 .gallery img:nth-child(2) {
   transform: rotate(3deg);
 }
 
+/* 💕 Frases */
 .phrases {
   margin: 40px 0;
   font-size: 18px;
   text-align: center;
 }
 
+/* 💌 Botón */
 .boton-container {
   text-align: center;
-  margin: 40px 0;
+  margin: 20px 0 10px;
 }
 
 button {
@@ -78,6 +86,7 @@ button {
   font-size: 18px;
   cursor: pointer;
   font-family: 'Georgia', serif;
+  border-radius: 10px;
 }
 
 button:hover {
@@ -88,20 +97,20 @@ button:hover {
 .modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.6);
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .modal-content {
   background: #fffdf8;
   padding: 40px;
-  max-width: 600px;
+  max-width: 650px;
+  width: 100%;
   position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
 }
 
 #closeLetter {
@@ -113,13 +122,17 @@ button:hover {
 }
 
 .firma {
-  margin-top: 30px;
+  margin-top: 25px;
   font-style: italic;
 }
-/* Para que el botón se vea más lindo */
-button { border-radius: 10px; }
 
-/* Para que el modal funcione con flex */
-.modal { display: none; } /* ya lo tienes, ok */
+/* 📱 Móvil */
+@media (max-width: 520px) {
+  .paper { padding: 24px; }
+  h1 { font-size: 34px; }
+  .phrases { font-size: 16px; }
+  button { width: 100%; }
+}
+
 
 
