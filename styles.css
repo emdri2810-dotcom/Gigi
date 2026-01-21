@@ -306,24 +306,75 @@ h1{
   .phrases{ font-size: 16px; }
   .btn{ width: 100%; }
 }
-/* 💗 LLORA SEGURO: fondo más íntimo cuando abres la carta */
+/* 💗 LLORA SEGURO: cuando abres la carta se siente más íntimo */
 .modal{
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(1.5px);
+  background: rgba(0,0,0,0.62);
+  backdrop-filter: blur(2px);
 }
 
-/* 💓 botón con latido suave */
+/* 💓 Latido suave del botón (sutil, no exagerado) */
 @keyframes heartbeat {
   0%, 100% { transform: scale(1); }
   40% { transform: scale(1.04); }
   70% { transform: scale(1.01); }
 }
-
 .btn{
-  animation: heartbeat 3.8s ease-in-out infinite;
+  animation: heartbeat 3.6s ease-in-out infinite;
 }
 
-/* cuando pones el mouse encima se siente más real */
+/* al pasar el mouse, se “calma” */
 .btn:hover{
   animation: none;
+}
+
+/* ✨ brillito delicado del botón */
+.btn{
+  position: relative;
+  overflow: hidden;
+}
+.btn::after{
+  content:"";
+  position:absolute;
+  top:-30%;
+  left:-60%;
+  width:40%;
+  height:160%;
+  transform: rotate(20deg);
+  background: rgba(255,255,255,0.35);
+  filter: blur(1px);
+  animation: shine 4.5s ease-in-out infinite;
+}
+@keyframes shine{
+  0% { left:-60%; opacity:0; }
+  30% { opacity:0.35; }
+  60% { opacity:0.15; }
+  100% { left:140%; opacity:0; }
+}
+/* ✨ ESTRELLITAS CAYENDO */
+.stars{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.star{
+  position: absolute;
+  top: -10px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  animation: fall linear forwards;
+  text-shadow: 0 0 6px rgba(255,255,255,0.6);
+}
+
+@keyframes fall{
+  from{
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  to{
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
 }
